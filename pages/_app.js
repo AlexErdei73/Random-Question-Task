@@ -10,6 +10,8 @@ export default function App({}) {
   const [memory, setMemory] = useState({});
   const [solutionShown, setSolutionShown] = useState(false);
 
+  const INPUT = { a: 3, b: 4, x: 80, y: 50 };
+
   function addToMemory(newValue) {
     setMemory((prev) => {
       return { ...prev, ...newValue };
@@ -24,16 +26,16 @@ export default function App({}) {
           width: "calc(100vw - 40px)",
           marginTop: "50px",
         }}>
-        <Question input={{ a: 3, b: 4, x: 80, y: 50 }} />
+        <Question input={INPUT} />
         <br />
         <br />
-        {solutionShown ? <Solution input={{ a: 3, b: 4, x: 80, y: 50 }} /> : ""}
+        {solutionShown ? <Solution input={INPUT} /> : ""}
         <br />
         <br />
         <MathInput
           buttons={["power", "times"]}
           markingFunction={(userInput) =>
-            markingFunction(userInput, answer({ a: 3, b: 4, x: 80, y: 50 }))
+            markingFunction(userInput, answer(INPUT))
           }
           memKey="mathinput1"
           memory={memory}
