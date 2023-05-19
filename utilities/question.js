@@ -34,3 +34,10 @@ export function solution(input) {
   );
   return lines;
 }
+
+export function answer(input) {
+  const { a, b, x, y } = input;
+  const c = a * x + b * y;
+  const d = b * x + a * y;
+  return Math.floor((c + d) / (a + b));
+}
