@@ -41,10 +41,10 @@ export default function App({}) {
           width: "calc(100vw - 40px)",
           marginTop: "50px",
         }}>
-        <Question input={questionParams} />
+        <Question params={questionParams} />
         <br />
         <br />
-        {solutionShown ? <Solution input={questionParams} /> : ""}
+        {solutionShown ? <Solution params={questionParams} /> : ""}
         <br />
         <br />
         <MathInput
