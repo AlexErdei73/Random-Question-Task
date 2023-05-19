@@ -7,11 +7,7 @@ const Solution = (props) => {
   const lines = solution({ a, b, x, y });
 
   return lines.map((line, index) =>
-    line ? (
-      <StaticMath key={index} latex={`\\text{${line}}`} />
-    ) : (
-      <br key={index} />
-    )
+    line ? <StaticMath key={index} latex={line} /> : <br key={index} />
   );
 };
 
