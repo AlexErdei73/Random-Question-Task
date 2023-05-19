@@ -2,9 +2,7 @@ import { solution } from "../../utilities/question";
 import StaticMath from "../StaticMath/StaticMath";
 
 const Solution = (props) => {
-  const { a, b, x, y } = props.input;
-
-  const lines = solution({ a, b, x, y });
+  const lines = solution(props.input);
 
   return lines.map((line, index) =>
     line ? <StaticMath key={index} latex={line} /> : <br key={index} />

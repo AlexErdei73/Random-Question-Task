@@ -4,13 +4,15 @@ export function question(input) {
   const d = b * x + a * y;
   const lines = [];
   lines.push(
-    `${a}kg of potatoes and ${b}kg of carrots have a total coast of ${c}p.`
+    `\\text{${a}kg of potatoes and ${b}kg of carrots have a total cost of ${c}p.}`
   );
   lines.push(
-    `${b}kg of potatoes and ${a}kg of carrots have a total coast of ${d}p.`
+    `\\text{${b}kg of potatoes and ${a}kg of carrots have a total cost of ${d}p.}`
   );
   lines.push("");
-  lines.push("Work out the total coast of 1kg of potatoes and 1kg of carrots.");
+  lines.push(
+    "\\text{Work out the total cost of 1kg of potatoes and 1kg of carrots.}"
+  );
   return lines;
 }
 
