@@ -4,21 +4,13 @@ import "../public/styles/globals.css";
 import { evaluateTex } from "tex-math-parser";
 import Question from "../components/Question/Question";
 import Solution from "../components/Solution/Solution";
-import { answer, randomInteger } from "../utilities/question";
+import { answer, randomInput } from "../utilities/question";
 
 export default function App({}) {
   const [memory, setMemory] = useState({});
   const [solutionShown, setSolutionShown] = useState(false);
 
-  const [a, setA] = useState(randomInteger(2, 9));
-  const [b, setB] = useState(randomInteger(2, 9, [a]));
-
-  const INPUT = {
-    a: a,
-    b: b,
-    x: 80,
-    y: 50,
-  };
+  const [input, setInput] = useState(randomInput());
 
   function addToMemory(newValue) {
     setMemory((prev) => {
@@ -34,16 +26,16 @@ export default function App({}) {
           width: "calc(100vw - 40px)",
           marginTop: "50px",
         }}>
-        <Question input={INPUT} />
+        <Question input={input} />
         <br />
         <br />
-        {solutionShown ? <Solution input={INPUT} /> : ""}
+        {solutionShown ? <Solution input={input} /> : ""}
         <br />
         <br />
         <MathInput
           buttons={["power", "times"]}
           markingFunction={(userInput) =>
-            markingFunction(userInput, answer(INPUT))
+            markingFunction(userInput, answer(input))
           }
           memKey="mathinput1"
           memory={memory}

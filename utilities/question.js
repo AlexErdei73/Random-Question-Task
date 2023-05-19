@@ -48,10 +48,18 @@ function randomInt(lowest, highest) {
   return lowest + Math.floor((highest - lowest + 1) * Math.random());
 }
 
-export function randomInteger(lowest, highest, excludedNumbers) {
+function randomInteger(lowest, highest, excludedNumbers) {
   let result = randomInt(lowest, highest);
   while (excludedNumbers && excludedNumbers.indexOf(result) !== -1) {
     result = randomInt(lowest, highest);
   }
   return result;
+}
+
+export function randomInput() {
+  const a = randomInteger(2, 9);
+  const b = randomInteger(2, 9, [a]);
+  const x = 80;
+  const y = 50;
+  return { a, b, x, y };
 }
