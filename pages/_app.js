@@ -1,5 +1,5 @@
 import MathInput from "../components/MathInput/MathInput";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../public/styles/globals.css";
 import { evaluateTex } from "tex-math-parser";
 import Question from "../components/Question/Question";
@@ -18,6 +18,25 @@ export default function App({}) {
     });
   }
 
+  useEffect(() => {
+    console.log(memory);
+  }, [memory]);
+
+  function markingFunction(userInput) {
+    let inputValue;
+    try {
+      //the evaluateTex function takes a latex string as an input and returns the evaluation as a javascript number
+      inputValue = evaluateTex(userInput).evaluated;
+    } catch {
+      return 0;
+    }
+    if (inputValue === answer(input)) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div
@@ -34,9 +53,7 @@ export default function App({}) {
         <br />
         <MathInput
           buttons={["power", "times"]}
-          markingFunction={(userInput) =>
-            markingFunction(userInput, answer(input))
-          }
+          markingFunction={markingFunction}
           memKey="mathinput1"
           memory={memory}
           setMemory={addToMemory}
@@ -78,19 +95,4 @@ export default function App({}) {
       </div>
     </div>
   );
-}
-
-function markingFunction(userInput, answer) {
-  let inputValue;
-  try {
-    //the evaluateTex function takes a latex string as an input and returns the evaluation as a javascript number
-    inputValue = evaluateTex(userInput).evaluated;
-  } catch {
-    return 0;
-  }
-  if (inputValue === answer) {
-    return 1;
-  } else {
-    return 0;
-  }
 }
