@@ -2,12 +2,44 @@ const ITEMS = {
   potatoes: {
     text: "kg of potatoes",
     unitPrices: [55, 60, 75, 80, 90],
-    matchingItems: ["carrots"],
+    matchingItems: ["carrots", "bananas", "tomatoes", "peppers"],
+    removePlurals: false,
   },
   carrots: {
     text: "kg of carrots",
     unitPrices: [40, 45, 50, 60],
-    matchingItems: ["potatoes"],
+    matchingItems: ["potatoes", "bananas", "tomatoes", "peppers"],
+    removePlurals: false,
+  },
+  bananas: {
+    text: "kg of bananas",
+    unitPrices: [80, 90, 100, 110],
+    matchingItems: ["potatoes", "carrots", "tomatoes", "peppers"],
+    removePlurals: false,
+  },
+  tomatoes: {
+    text: "kg of tomatoes",
+    unitPrices: [150, 170, 180],
+    matchingItems: ["potatoes", "carrots", "bananas", "peppers"],
+    removePlurals: false,
+  },
+  peppers: {
+    text: "kg of peppers",
+    unitPrices: [180, 185, 190, 200, 210],
+    matchingItems: ["potatoes", "carrots", "bananas", "tomatoes"],
+    removePlurals: false,
+  },
+  tvSets: {
+    text: "TV sets",
+    unitPrices: [450, 690, 1500],
+    matchingItems: ["soundBars"],
+    removePlurals: true,
+  },
+  soundBars: {
+    text: "sound bars",
+    unitPrices: [150, 650, 400, 240, 300],
+    matchingItems: ["tvSets"],
+    removePlurals: true,
   },
 };
 
