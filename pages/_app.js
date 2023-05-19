@@ -1,5 +1,5 @@
 import MathInput from "../components/MathInput/MathInput";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../public/styles/globals.css";
 import { evaluateTex } from "tex-math-parser";
 import Question from "../components/Question/Question";
@@ -10,17 +10,13 @@ export default function App({}) {
   const [memory, setMemory] = useState({});
   const [solutionShown, setSolutionShown] = useState(false);
 
-  const [input, setInput] = useState(randomInput());
+  const [questionParams, setQuestionParams] = useState(randomInput());
 
   function addToMemory(newValue) {
     setMemory((prev) => {
       return { ...prev, ...newValue };
     });
   }
-
-  useEffect(() => {
-    console.log(memory);
-  }, [memory]);
 
   function markingFunction(userInput) {
     let inputValue;
@@ -30,7 +26,7 @@ export default function App({}) {
     } catch {
       return 0;
     }
-    if (inputValue === answer(input)) {
+    if (inputValue === answer(questionParams)) {
       return 1;
     } else {
       return 0;
@@ -45,10 +41,10 @@ export default function App({}) {
           width: "calc(100vw - 40px)",
           marginTop: "50px",
         }}>
-        <Question input={input} />
+        <Question input={questionParams} />
         <br />
         <br />
-        {solutionShown ? <Solution input={input} /> : ""}
+        {solutionShown ? <Solution input={questionParams} /> : ""}
         <br />
         <br />
         <MathInput
