@@ -1,9 +1,9 @@
-import StaticMath from "../components/StaticMath/StaticMath";
 import MathInput from "../components/MathInput/MathInput";
 import { useState } from "react";
 import "../public/styles/globals.css";
 import { evaluateTex } from "tex-math-parser";
 import Question from "../components/Question/question";
+import Solution from "../components/Solution/Solution";
 
 export default function App({}) {
   const [memory, setMemory] = useState({});
@@ -26,11 +26,7 @@ export default function App({}) {
         <Question input={{ a: 3, b: 4, x: 80, y: 50 }} />
         <br />
         <br />
-        {solutionShown ? (
-          <StaticMath latex={`\\text{Display the solution here}`} />
-        ) : (
-          ""
-        )}
+        {solutionShown ? <Solution input={{ a: 3, b: 4, x: 80, y: 50 }} /> : ""}
         <br />
         <br />
         <MathInput
