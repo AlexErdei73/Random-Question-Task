@@ -43,3 +43,15 @@ export function answer(input) {
   const d = b * x + a * y;
   return Math.floor((c + d) / (a + b));
 }
+
+function randomInt(lowest, highest) {
+  return lowest + Math.floor((highest - lowest + 1) * Math.random());
+}
+
+export function randomInteger(lowest, highest, excludedNumbers) {
+  let result = randomInt(lowest, highest);
+  while (excludedNumbers && excludedNumbers.indexOf(result) !== -1) {
+    result = randomInt(lowest, highest);
+  }
+  return result;
+}

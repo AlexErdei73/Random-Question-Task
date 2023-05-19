@@ -4,13 +4,21 @@ import "../public/styles/globals.css";
 import { evaluateTex } from "tex-math-parser";
 import Question from "../components/Question/Question";
 import Solution from "../components/Solution/Solution";
-import { answer } from "../utilities/question";
+import { answer, randomInteger } from "../utilities/question";
 
 export default function App({}) {
   const [memory, setMemory] = useState({});
   const [solutionShown, setSolutionShown] = useState(false);
 
-  const INPUT = { a: 3, b: 4, x: 80, y: 50 };
+  const [a, setA] = useState(randomInteger(2, 9));
+  const [b, setB] = useState(randomInteger(2, 9, [a]));
+
+  const INPUT = {
+    a: a,
+    b: b,
+    x: 80,
+    y: 50,
+  };
 
   function addToMemory(newValue) {
     setMemory((prev) => {
