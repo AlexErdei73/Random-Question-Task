@@ -4,6 +4,12 @@ const ITEMS = {
 		unitPrices: [55, 60, 75, 80, 90],
 		matchingItems: ["carrots", "bananas", "tomatoes", "peppers"],
 		removePlurals: false,
+		funLines: [
+			"\\text{You can start with the following formula:}",
+			"\\sigma=\\frac{2\\pi^5k^4}{15c^2h^3}\\int_0^{\\infty}\\frac{x^3}{e^x-1}dx",
+			"\\text{Don't worry, I'm just kidding :) The simple solution is this:}",
+			"",
+		],
 	},
 	carrots: {
 		text: "kg of carrots",
@@ -71,12 +77,12 @@ export function question(params) {
 }
 
 export function solution(params) {
-	const { input, textA, textB, removePlurals } = params;
+	const { input, textA, textB, removePlurals, funLines } = params;
 	const { a, b, x, y } = input;
 	const c = a * x + b * y;
 	const d = b * x + a * y;
 	const answer = Math.floor((c + d) / (a + b));
-	const lines = [];
+	const lines = funLines ? funLines : [];
 	let textAWithNoPlural = textA;
 	let textBWithNoPlural = textB;
 	let moneyUnit = "p";
@@ -133,5 +139,6 @@ export function randomInput() {
 		textA: itemA.text,
 		textB: itemB.text,
 		removePlurals: itemA.removePlurals,
+		funLines: itemA.funLines,
 	};
 }
